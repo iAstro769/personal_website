@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b1b">
+<title>Enceladus | Worlds Beyond</title>
+<style>
+:root{--bg:#070b1b;--panel:#101a32;--panel2:#14213d;--text:#edf3ff;--muted:#a9b8d3;--cyan:#72e4ee;--violet:#b7a0ff;--line:rgba(173,202,255,.17);--gold:#ffd58a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 5%,#1a2850 0,transparent 34%),radial-gradient(ellipse at 10% 45%,#102447 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.65}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;background-image:radial-gradient(1px 1px at 8% 12%,#fff 99%,transparent),radial-gradient(1px 1px at 32% 77%,#fff 99%,transparent),radial-gradient(2px 2px at 73% 22%,#fff 99%,transparent),radial-gradient(1px 1px at 91% 64%,#fff 99%,transparent),radial-gradient(1px 1px at 56% 48%,#fff 99%,transparent);background-size:260px 240px;z-index:-1}
+a{color:var(--cyan)}button{font:inherit}.nav{position:sticky;top:0;z-index:10;background:rgba(7,11,27,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav-inner{max-width:1160px;margin:auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:.12em;font-size:.85rem;color:white;text-decoration:none}.brand span{color:var(--cyan)}.nav-links{display:flex;gap:6px;flex-wrap:wrap}.nav-links a{color:var(--muted);text-decoration:none;padding:8px 11px;border-radius:20px;font-size:.88rem}.nav-links a:hover,.nav-links a.active{color:white;background:rgba(114,228,238,.12)}
+main{max-width:1160px;margin:auto;padding:0 24px 80px}.page{display:none;min-height:75vh;padding-top:54px}.page.active{display:block;animation:fade .35s ease}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--cyan);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:750}.hero{min-height:78vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:35px;padding:55px 0}.hero h1{font-size:clamp(2.7rem,6vw,5.5rem);line-height:1.02;letter-spacing:-.02em;margin:15px 0 22px}.gradient{background:linear-gradient(100deg,#fff 10%,#85eaf2 52%,#b9a4ff 95%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:1.12rem;color:#c2cee3;max-width:650px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{border:1px solid var(--line);border-radius:999px;padding:11px 18px;text-decoration:none;color:white;background:rgba(255,255,255,.04);cursor:pointer}.btn.primary{background:linear-gradient(100deg,#58cbd8,#8b7ce8);border:0;color:#07111e;font-weight:800}.planet-wrap{min-height:420px;display:grid;place-items:center;position:relative}.planet{width:min(350px,75vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 32% 25%,#f1f7ff 0,#b6c9df 12%,#718da9 36%,#263e61 65%,#111c37 78%);box-shadow:inset -28px -22px 60px #030715,0 0 70px rgba(103,199,239,.2);position:relative;overflow:hidden}.planet:before{content:"";position:absolute;inset:45% -10%;height:9%;background:repeating-linear-gradient(4deg,transparent 0 10px,rgba(255,255,255,.28) 11px 13px,transparent 14px 22px);transform:rotate(-23deg);filter:blur(1px)}.orbit{position:absolute;width:115%;height:45%;border:1px solid rgba(164,217,255,.45);border-radius:50%;transform:rotate(-22deg)}.moon{position:absolute;width:24px;height:24px;border-radius:50%;background:linear-gradient(140deg,#fff,#839ab6);top:24%;right:8%;box-shadow:0 0 18px #9bdff4}.planet-caption{position:absolute;bottom:4%;color:var(--muted);font-size:.8rem;letter-spacing:.13em;text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.035em;margin:8px 0 18px}h3{margin:0 0 9px}.muted{color:var(--muted)}.section-intro{max-width:760px;color:#c1cde0;margin-bottom:28px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(145deg,rgba(20,33,61,.92),rgba(12,20,39,.92));border:1px solid var(--line);border-radius:19px;padding:22px;box-shadow:0 12px 35px rgba(0,0,0,.12)}.card p{color:var(--muted);margin-bottom:0}.tag{display:inline-block;color:var(--cyan);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}.callout{border-left:3px solid var(--cyan);padding:15px 18px;background:rgba(114,228,238,.07);border-radius:0 12px 12px 0;color:#dce8f8;margin:25px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}.stat{padding:17px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.035)}.stat strong{display:block;font-size:1.35rem;color:var(--cyan)}.stat span{font-size:.82rem;color:var(--muted)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0}.pdf-frame{width:100%;height:76vh;min-height:560px;border:1px solid var(--line);border-radius:16px;background:#fff}.pdf-fallback{padding:18px;background:var(--panel);border-radius:12px;margin-top:12px}
+.about-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}.portrait{aspect-ratio:4/5;border:1px dashed rgba(114,228,238,.55);border-radius:22px;background:radial-gradient(circle at 50% 35%,rgba(114,228,238,.16),transparent 42%),linear-gradient(145deg,#172849,#0b1225);display:grid;place-items:center;text-align:center;padding:24px;overflow:hidden}.portrait svg{width:110px;opacity:.8}.portrait p{color:var(--muted);font-size:.9rem}.portrait img{width:100%;height:100%;object-fit:cover;display:none}.profile-note{font-size:.78rem;color:var(--muted);margin-top:10px}
+.map-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:20px;background:rgba(9,17,35,.8);padding:10px}.concept-svg{width:100%;min-width:720px;height:auto;display:block}.node{fill:#142849;stroke:#71dce8;stroke-width:1.5}.node.alt{stroke:#b7a0ff}.node.gold{stroke:#ffd58a}.node-title{fill:#f2f6ff;font-size:15px;font-weight:700;text-anchor:middle}.node-sub{fill:#b9c8df;font-size:11px;text-anchor:middle}.edge{stroke:#7694bd;stroke-width:1.5;fill:none}.edge-label{fill:#b8c9e2;font-size:11px;text-anchor:middle}.map-legend{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.83rem;margin:15px 4px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+footer{border-top:1px solid var(--line);padding:25px 24px;color:var(--muted);text-align:center;font-size:.82rem}.small{font-size:.85rem}.references{columns:2;column-gap:30px}.references li{break-inside:avoid;margin-bottom:10px;color:var(--muted)}
+@media(max-width:800px){.hero,.about-layout{grid-template-columns:1fr}.hero{padding-top:35px}.planet-wrap{min-height:330px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.nav-inner{align-items:flex-start;flex-direction:column}.nav-links{gap:2px}.nav-links a{font-size:.8rem;padding:7px 9px}.references{columns:1}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+<a class="brand" href="#home" data-page="home">WORLDS <span>BEYOND</span></a>
+<nav class="nav-links" aria-label="Main navigation">
+<a href="#home" data-page="home" class="active">Home</a><a href="#literature" data-page="literature">Literature Review</a><a href="#concept" data-page="concept">Concept Map</a><a href="#about" data-page="about">About Me</a>
+</nav></div></header>
+<main>
+<section class="page active" id="home">
+<div class="hero">
+<div>
+<div class="eyebrow">Planetary science · Astrobiology · Orbital dynamics</div>
+<h1>Can an icy moon constrain the parameters required for planets/moons to host <span class="gradient"> life?</span></h1>
+<p class="lead">A research project exploring Enceladus, a Saturnian moon whose hidden ocean and orbital history offer an opportunity to constrain orbital parameters needed for life.</p>
+<div class="actions"><a class="btn" href="#literature" data-page="literature">Read the literature review</a></div>
+</div>
+<div class="planet-wrap"><div class="orbit"></div><div class="planet"><div class="moon"></div></div><div class="planet-caption">Enceladus · Saturn system</div></div>
+</div>
+
+<div class="eyebrow">The central idea</div><h2>Connect what we observe <span class="gradient">today</span> to how the system evolved and how that can be used to constrain parameters which planets/moons need to host life.</h2>
+<p class="section-intro">Cassini observations constrain the present-day Saturnian system. Numerical simulations can then test which possible earlier orbital configurations could evolve toward the system we observe</p>
+<div class="grid">
+<div class="card"><span class="tag">01 / Observe</span><h3>Cassini data</h3><p>Use spacecraft measurements and published planetary parameters to establish constraints on Enceladus and its neighboring moons.</p></div>
+<div class="card"><span class="tag">02 / Simulate</span><h3>Orbital evolution</h3><p>Explore candidate initial configurations with N-body simulations and investigate stability and orbital relationships.</p></div>
+<div class="card"><span class="tag">03 / Interpret</span><h3>Habitability context</h3><p>Connect ocean worlds, tidal heating, liquid water, and planetary evolution to the broader search for extraterrestrial life.</p></div>
+</div>
+</section>
+
+<section class="page" id="literature">
+<div class="eyebrow">Research foundation</div><h2>Literature <span class="gradient">review</span></h2>
+<div class="toolbar"><span class="muted small">Embedded PDF · 6 pages</span><a class="btn primary" href="Literature%20Review.pdf" target="_blank" rel="noopener">Open PDF in a new tab</a></div>
+<iframe class="pdf-frame" src="Literature%20Review.pdf" title="Project literature review PDF"></iframe>
+<div class="pdf-fallback">If you can't see the PDF, <a href="Literature%20Review.pdf" target="_blank" rel="noopener">open the literature review this way</a>.</div>
+</section>
+
+<section class="page" id="concept">
+<div class="eyebrow">Astrobiology overview</div><h2>Concept map: <span class="gradient">extraterrestrial life</span></h2>
+<div class="map-wrap">
+    <svg class="concept-svg" viewBox="0 0 1000 650" role="img" aria-label="Concept map showing extraterrestrial life connected to planetary formation and evolution, astrobiology, and spectroscopy, with their related questions and concepts">
+    <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#7694bd"/></marker></defs>
+    
+    <!-- Central concept and its three branches -->
+    <path class="edge" marker-end="url(#arrow)" d="M500 258 L500 220"/>
+    <path class="edge" marker-end="url(#arrow)" d="M456 364 L380 405"/>
+    <path class="edge" marker-end="url(#arrow)" d="M544 364 L635 385"/>
+    
+    <!-- Planetary formation and evolution branches -->
+    <path class="edge" marker-end="url(#arrow)" d="M500 122 L500 72"/>
+    <path class="edge" marker-end="url(#arrow)" d="M430 170 L300 170"/>
+    <path class="edge" marker-end="url(#arrow)" d="M570 170 L700 170"/>
+    
+    <!-- Astrobiology branches -->
+    <path class="edge" marker-end="url(#arrow)" d="M330 420 L330 340"/>
+    <path class="edge" marker-end="url(#arrow)" d="M265 465 L175 465"/>
+    <path class="edge" marker-end="url(#arrow)" d="M330 510 L330 570"/>
+    
+    <!-- Spectroscopy branches -->
+    <path class="edge" marker-end="url(#arrow)" d="M690 390 L690 330"/>
+    <path class="edge" marker-end="url(#arrow)" d="M790 445 L895 445"/>
+    <path class="edge" marker-end="url(#arrow)" d="M690 495 L690 565"/>
+    
+    <!-- Main nodes -->
+    <rect class="node" x="430" y="122" width="140" height="98" rx="0"/>
+    <text class="node-title" x="500" y="160">Planetary</text><text class="node-title" x="500" y="180">formation and</text><text class="node-title" x="500" y="200">evolution</text>
+    
+    <circle class="node" cx="500" cy="320" r="62"/>
+    <text class="node-title" x="500" y="314" style="font-size:13px">Extraterrestrial</text>
+    <text class="node-title" x="500" y="334" style="font-size:13px">Life</text>
+    
+    <rect class="node" x="265" y="420" width="130" height="116" rx="0"/>
+    <text class="node-title" x="330" y="482">Astrobiology</text>
+    
+    <rect class="node" x="625" y="395" width="130" height="105" rx="0"/>
+    <text class="node-title" x="690" y="452">Spectroscopy</text>
+    
+    <!-- Wavy-note style labels -->
+    <path class="node gold" d="M445 14 H555 V67 Q527 51 500 67 Q472 83 445 67 Z"/>
+    <text class="node-sub" x="500" y="34">Different models for</text><text class="node-sub" x="500" y="50">habitability</text>
+    
+    <path class="node alt" d="M140 136 H310 V200 Q267 184 225 200 Q182 216 140 200 Z"/>
+    <text class="node-sub" x="225" y="156">Type of planet</text>
+    <text class="node-sub" x="225" y="172">(Mini-Neptune, Hot Jupiter,</text>
+    <text class="node-sub" x="225" y="187">Super-Earth)</text>
+    
+    <path class="node alt" d="M700 140 H830 V190 Q798 174 765 190 Q732 206 700 190 Z"/>
+    <text class="node-sub" x="765" y="169">Habitable Zone</text>
+    
+    <path class="node alt" d="M280 275 H380 V330 Q355 314 330 330 Q305 346 280 330 Z"/>
+    <text class="node-sub" x="330" y="306">Tracers (DMS)</text>
+    
+    <path class="node gold" d="M45 438 H175 V490 Q143 474 110 490 Q77 506 45 490 Z"/>
+    <text class="node-sub" x="110" y="467">Water required at all?</text>
+    
+    <path class="node alt" d="M280 570 H380 V620 Q355 604 330 620 Q305 636 280 620 Z"/>
+    <text class="node-sub" x="330" y="600">Water</text>
+    
+    <path class="node alt" d="M640 275 H740 V330 Q715 314 690 330 Q665 346 640 330 Z"/>
+    <text class="node-sub" x="690" y="306">Elements for life?</text>
+    
+    <path class="node gold" d="M830 418 H960 V470 Q928 454 895 470 Q862 486 830 470 Z"/>
+    <text class="node-sub" x="895" y="448">Atmosphere?</text>
+    
+    <path class="node alt" d="M640 565 H740 V620 Q715 604 690 620 Q665 636 640 620 Z"/>
+    <text class="node-sub" x="690" y="596">Absorption</text>
+    </svg></div>
+<div class="map-legend"><span><i class="dot" style="background:#71dce8"></i>Environments and methods</span><span><i class="dot" style="background:#b7a0ff"></i>Search targets and evidence</span><span><i class="dot" style="background:#ffd58a"></i>Central concepts</span></div>
+<p class="small muted">*Titan has surface lakes and seas of liquid hydrocarbons; it is included here as a distinct ocean-world/astrobiology target, not as an Earth-like surface-water environment.</p>
+</section>
+
+<section class="page" id="about">
+<div class="eyebrow">The researcher</div><h2>About <span class="gradient">me</span></h2>
+<div class="about-layout">
+<div><div class="portrait" id="portrait">
+<img id="profile-photo" src="Screenshot 2026-08-24 220314.png" alt="Portrait of the researcher" style="display:block"></div>
+</div>
+<div>
+<h3>Curiosity about the universe</h3>
+<p class="muted">Hello! my name is Ishan Prabhu and I am an IT major at Innovation Academy. I love almost everything astronomy related, but I specifically am interested in astrophysics and the propect of extraterrestrial life. When I grow up, I want to become an astrophysicist</p>
+<p class="muted">This project combines my interest in astronomy and astrophysics with my interest in extraterrestrial life. By constraining initial orbital parameters of moons, I can help astronomers in the future find out which planets can host life and which ones cannot by eliminating a large subset of options or providing a small subset of options for them to check.</p>
+</div></div>
+</section>
+</main>
+<footer>WORLDS BEYOND · Enceladus and the Saturnian system</footer>
+<script>
+const links=[...document.querySelectorAll('[data-page]')];
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.page===id));history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});}
+links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();showPage(a.dataset.page)}));
+const initial=location.hash.slice(1);if(initial&&document.getElementById(initial))showPage(initial);
+</script>
+</body></html>
